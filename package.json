@@ -1,0 +1,25 @@
+{
+  "name": "mox",
+  "version": "0.0.1",
+  "description": "HTTP Mocking Helper for mocha tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/billywhizz/mox.git"
+  },
+  "keywords": [
+    "mocha",
+    "http",
+    "unit",
+    "test"
+  ],
+  "author": "Andrew Johnston",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/billywhizz/mox/issues"
+  },
+  "homepage": "https://github.com/billywhizz/mox#readme"
+}
