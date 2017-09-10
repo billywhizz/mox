@@ -118,4 +118,4 @@ function reset(name, opts) {
 	http.get = http.request
 }
 
-module.exports = reset
+module.exports = { reset }
