@@ -98,7 +98,7 @@ module.exports = {
                     mocks.push(context)
                     writeFileSync(mockPath, JSON.stringify(mocks))
                 })
-                if(callback) callback(err, res)
+                if(callback) callback(null, res)
             })
             const _end = _req.end
             const _write = _req.write
