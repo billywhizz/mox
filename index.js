@@ -6,6 +6,7 @@ const { join } = require('path')
 const { inherits } = require('util')
 
 const _request = http.request
+const _get = http.get
 const empty = function() {}
 
 class MockRequest {
@@ -67,9 +68,14 @@ function createRequest(options, callback, mock, context) {
 
 module.exports = {
     reset: function(name, opts) {
+        if (!name) {
+            http.get = _get;
+            http.request = _request;
+            return
+        }
         let mocks = []
         let counter = 0
-				const mockPath = join(opts.path || __dirname, `${name}.json`)
+        const mockPath = join(opts.path || __dirname, `${name}.json`)
         if (!process.env.MOX_REFRESH) {
             try {
                 mocks = require(mockPath)

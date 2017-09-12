@@ -1,6 +1,6 @@
 {
   "name": "mox",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "HTTP Mocking Helper for mocha tests",
   "main": "index.js",
   "scripts": {
