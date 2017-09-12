@@ -38,13 +38,13 @@ function createRequest(options, callback, mock, context) {
     }
 
     request.end = function(chunk) {
-        context.request.body.push(chunk)
+        if(chunk) context.request.body.push(chunk)
         context.request.rawHeaders = request._header
         if (options.validator) {
             try {
                 options.validator(context, mock)
                 setTimeout(() => {
-                    if(callback) callback(null, res)
+                    if(callback) callback(res)
                     request.emit('response', res)
                     mock.response.body.forEach((chunk) => {
                         if (typeof chunk === 'string') {
@@ -67,7 +67,7 @@ function createRequest(options, callback, mock, context) {
 }
 
 module.exports = {
-    reset: function(name, opts) {
+    reset: function(name, opts = {}) {
         if (!name) {
             http.get = _get;
             http.request = _request;
@@ -98,7 +98,7 @@ module.exports = {
                     mocks.push(context)
                     writeFileSync(mockPath, JSON.stringify(mocks))
                 })
-                if(callback) callback(null, res)
+                if(callback) callback(res)
             })
             const _end = _req.end
             const _write = _req.write
@@ -107,7 +107,7 @@ module.exports = {
                 _write.apply(_req, Array.prototype.slice.call(arguments, 0))
             }
             _req.end = function(chunk) {
-                context.request.body.push(chunk)
+                if (chunk) context.request.body.push(chunk)
                 _end.apply(_req, Array.prototype.slice.call(arguments, 0))
             }
             return _req

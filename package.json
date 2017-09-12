@@ -1,6 +1,6 @@
 {
   "name": "mox",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "HTTP Mocking Helper for mocha tests",
   "main": "index.js",
   "scripts": {
@@ -21,5 +21,6 @@
   "bugs": {
     "url": "https://github.com/billywhizz/mox/issues"
   },
-  "homepage": "https://github.com/billywhizz/mox#readme"
+  "homepage": "https://github.com/billywhizz/mox#readme",
+  "dependencies": {}
 }
