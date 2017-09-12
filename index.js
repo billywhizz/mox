@@ -85,6 +85,9 @@ module.exports = {
             const { path, method, headers, href, host, port, uri } = options
             const id = counter++
             const context = { id: id, request: { path, method, headers, body: [], href, host, port, uri } }
+            if (context.request.host === '127.0.0.1' && context.request.path.match(/\/devtools\/*/)) {
+                return _get(options)
+            }
             const mock = mocks[id]
             if (mock) {
                 return createRequest(opts, callback, mock, context)
